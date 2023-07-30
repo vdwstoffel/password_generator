@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from PyQt6.QtWidgets import QApplication, QMainWindow, QToolBar
+from PyQt6.QtWidgets import QApplication, QMainWindow, QToolBar, QLabel
 from PyQt6.QtGui import QAction
 import sys
 
@@ -7,6 +7,7 @@ from lib.database import Database
 from ui.CreatePasswordWindow import CreatePasswordWindow
 from ui.ShowPasswordsWindow import ShowPasswordsWindow
 from ui.SettingsWindow import SettingsWindow
+from ui.IntroWindow import IntroWindow
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -35,6 +36,10 @@ class MainWindow(QMainWindow):
         settings_action.triggered.connect(self.show_settings_window)
         toolbar.addAction(settings_action)
 
+        self.show_intro_window()       
+
+    def show_intro_window(self):
+        self.setCentralWidget(IntroWindow())
         
     def show_generate_password_screen(self):
         self.setCentralWidget(CreatePasswordWindow())
