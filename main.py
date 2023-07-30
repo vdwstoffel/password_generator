@@ -6,6 +6,7 @@ import sys
 from lib.database import Database
 from ui.CreatePasswordWindow import CreatePasswordWindow
 from ui.ShowPasswordsWindow import ShowPasswordsWindow
+from ui.SettingsWindow import SettingsWindow
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -29,12 +30,20 @@ class MainWindow(QMainWindow):
         passwords_action = QAction("Passwords", self)
         passwords_action.triggered.connect(self.show_passwords_window)
         toolbar.addAction(passwords_action)
+
+        settings_action = QAction("Settings", self)
+        settings_action.triggered.connect(self.show_settings_window)
+        toolbar.addAction(settings_action)
+
         
     def show_generate_password_screen(self):
         self.setCentralWidget(CreatePasswordWindow())
 
     def show_passwords_window(self):
         self.setCentralWidget(ShowPasswordsWindow())
+    
+    def show_settings_window(self):
+        self.setCentralWidget(SettingsWindow())
 
 if __name__ == '__main__':
     app = QApplication([])

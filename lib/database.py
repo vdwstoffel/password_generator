@@ -81,9 +81,19 @@ class Database:
         except Exception as e:
             self.logger.log(f"Error returning all values: {e}")
             conn.close()
-        
 
-if __name__ == "__main__":
+    def delete_record(self, uuid):
 
-    a = Database()
-    a.get_all_records()
+        conn = self.connect_to_database()
+        cur = conn.cursor()
+        try: 
+            cur.execute(f"""
+                            DELETE FROM {self.table}
+                            where pw_id = '{uuid}'                        
+                        """)
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            print(e)
+            self.logger.log(f"Error when deleting item: {e}")    
+            conn.close()
