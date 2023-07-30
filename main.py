@@ -12,7 +12,7 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Password Generator")
-        self.setFixedWidth(300)
+        self.setFixedWidth(500)
         self.setFixedHeight(300)
         Database().create_password_table()
 

@@ -14,7 +14,7 @@ class ShowPasswordsWindow(QMainWindow):
 
         self.records_table = QTableWidget(row_count, 3, self)
         self.records_table.cellClicked.connect(self.copy_to_clipboard)                   # copy the clicked cell to clipboard
-        self.records_table.setGeometry(10, 10, 280, 240)
+        self.records_table.setGeometry(10, 10, 480, 240)
         self.records_table.setHorizontalHeaderLabels(["Domain", "Username", "Password"])
 
         for index, item in enumerate(records):
@@ -22,6 +22,9 @@ class ShowPasswordsWindow(QMainWindow):
             self.records_table.setItem(index, 0, QTableWidgetItem(domain))
             self.records_table.setItem(index, 1, QTableWidgetItem(username))
             self.records_table.setItem(index, 2, QTableWidgetItem(password))
+        
+        # Auto size the width of columns to fit the content
+        self.records_table.resizeColumnsToContents()
 
     def copy_to_clipboard(self):
         """

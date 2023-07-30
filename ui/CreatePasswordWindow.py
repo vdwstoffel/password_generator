@@ -12,7 +12,9 @@ class CreatePasswordWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.HEIGHT = 20 # default height for all components
+        self.HEIGHT = 20        # default height for all components
+        self.BASE_LEFT = 100    # default padding for left hand size
+        self.BASE_TOP = 30      # default top heading
         self.password_generator = PasswordGenerator()
         self.database = Database()
         clipboard_svg = QIcon('./clipboard.svg')
@@ -33,17 +35,17 @@ class CreatePasswordWindow(QMainWindow):
 
         # Window Placement
         # Left, Top, Width, Heigh
-        self.heading_label.setGeometry(60, 10, 200, self.HEIGHT)
-        self.domain_label.setGeometry(10, 40, 100, self.HEIGHT)
-        self.domain_line_edit.setGeometry(100, 40, 180, self.HEIGHT)
-        self.username_label.setGeometry(10, 70, 100, self.HEIGHT)
-        self.username_line_edit.setGeometry(100, 70, 180, self.HEIGHT)
-        self.password_label.setGeometry(10, 100, 100, self.HEIGHT)
-        self.generated_password_label.setGeometry(100, 100, 180, self.HEIGHT)
-        self.copy_to_clipboard_button.setGeometry(280, 100, 20, self.HEIGHT)
-        self.generate_button.setGeometry(60, 130, 200, self.HEIGHT)
-        self.save_button.setGeometry(60, 160, 200, self.HEIGHT)
-        self.feedback_label.setGeometry(10, 190, 200, self.HEIGHT)
+        self.heading_label.setGeometry(self.BASE_LEFT + 60, self.BASE_TOP + 10, 200, self.HEIGHT)
+        self.domain_label.setGeometry(self.BASE_LEFT + 10, self.BASE_TOP + 40, 100, self.HEIGHT)
+        self.domain_line_edit.setGeometry(self.BASE_LEFT + 100, self.BASE_TOP + 40, 180, self.HEIGHT)
+        self.username_label.setGeometry(self.BASE_LEFT + 10, self.BASE_TOP + 70, 100, self.HEIGHT)
+        self.username_line_edit.setGeometry(self.BASE_LEFT + 100, self.BASE_TOP + 70, 180, self.HEIGHT)
+        self.password_label.setGeometry(self.BASE_LEFT + 10, self.BASE_TOP + 100, 100, self.HEIGHT)
+        self.generated_password_label.setGeometry(self.BASE_LEFT + 100,self.BASE_TOP + 100, 180, self.HEIGHT)
+        self.copy_to_clipboard_button.setGeometry(self.BASE_LEFT + 280, self.BASE_TOP + 100, 20, self.HEIGHT)
+        self.generate_button.setGeometry(self.BASE_LEFT + 60, self.BASE_TOP + 130, 200, self.HEIGHT)
+        self.save_button.setGeometry(self.BASE_LEFT + 60, self.BASE_TOP + 160, 200, self.HEIGHT)
+        self.feedback_label.setGeometry(self.BASE_LEFT + 10, self.BASE_TOP + 190, 200, self.HEIGHT)
 
         # Interactions
         self.generate_button.clicked.connect(self.generate_password_handler)
